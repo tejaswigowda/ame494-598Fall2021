@@ -12,6 +12,10 @@ app.get("/", function (req, res) {
 
 
 app.get("/eval", function (req, res) {
+  var eq = decodeURIComponent(req.query.a);
+    console.log(eq);
+
+    var result = 1; // you need to calculate this `result`
 
     res.send(result.toString()); // send response body
 });
