@@ -1,8 +1,11 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "mocap";
-const char* password = "formocap";
+
+
+
+const char* ssid = "iPhone";
+const char* password = "password";
 
 //Your Domain name with URL path or IP address with path
 const char* serverName = "http://www.google.com/";
