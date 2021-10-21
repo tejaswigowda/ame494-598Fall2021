@@ -1,6 +1,6 @@
 #Assignment 5
 
-**Due Oct 26th in class**
+**Due Oct 26th midnight**
 
 ## Task
 Use the code handout and deploy the data aggregator Web Socket server on AWS EC2,
