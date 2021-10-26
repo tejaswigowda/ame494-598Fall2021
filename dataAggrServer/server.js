@@ -15,7 +15,7 @@ server.get("/", function (req, res) {
 
 server.get("/sendData", function (req, res) {
   console.log(req.query);
-  db.collection("data").insert(req.query, function(err, result){
+  db.collection("dataTH").insert(req.query, function(err, result){
     res.end("1");
   });
 });
