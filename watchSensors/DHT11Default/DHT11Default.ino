@@ -8,8 +8,8 @@ TTGOClass *ttgo;
 #include <HTTPClient.h>
 
 
-const char* ssid = "NETGEAR31";
-const char* password = "fluffywind2904";
+const char* ssid = "";
+const char* password = "";
 
 //Your Domain name with URL path or IP address with path
 const char* serverName = "http://192.168.0.195:1234/sendData";
@@ -28,7 +28,7 @@ String response;
 //      VCC: 5V or 3V
 //      GND: GND
 //      DATA: 25
-int pinDHT11 = 25;
+int pinDHT11 = 21;
 SimpleDHT11 dht11(pinDHT11);
 
 
