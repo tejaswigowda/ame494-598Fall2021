@@ -27,7 +27,7 @@ String response;
 // for DHT11,
 //      VCC: 5V or 3V
 //      GND: GND
-//      DATA: 25
+//      DATA: 21 or 25
 int pinDHT11 = 21;
 SimpleDHT11 dht11(pinDHT11);
 
@@ -117,5 +117,5 @@ void loop() {
 
 
   // DHT11 sampling rate is 1HZ.
-  delay(3500);
+  delay(6500);
 }
