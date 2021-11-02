@@ -11,8 +11,7 @@ var VALUEh = 0;
 var VALUEtime = 0;
 
 
-//var db = MS.db("mongodb://root:46Jl57IDy3Ji@127.0.0.1:27017/sensorData")
-var db = MS.db("mongodb://user:pass@localhost:27017/sensorData")
+var db = MS.db("mongodb://localhost:27017/sensorData")
 app.get("/", function (req, res) {
     res.redirect("/index.html");
 });
@@ -20,7 +19,7 @@ app.get("/", function (req, res) {
 app.get("/getAverage", function (req, res) {
   var from = parseInt(req.query.from);
   var to = parseInt(req.query.to);
-  db.collection("data").find({time:{$gt:from, $lt:to}}).toArray(function(err, result){
+  db.collection("dataWeather").find({time:{$gt:from, $lt:to}}).toArray(function(err, result){
   	console.log(err);
   	console.log(result);
   	var tempSum = 0;
@@ -36,7 +35,7 @@ app.get("/getAverage", function (req, res) {
 });
 
 app.get("/getLatest", function (req, res) {
-  db.collection("data").find({}).sort({time:-1}).limit(10).toArray(function(err, result){
+  db.collection("dataWeather").find({}).sort({time:-1}).limit(10).toArray(function(err, result){
     res.send(JSON.stringify(result));
   });
 });
@@ -44,7 +43,7 @@ app.get("/getLatest", function (req, res) {
 app.get("/getData", function (req, res) {
   var from = parseInt(req.query.from);
   var to = parseInt(req.query.to);
-  db.collection("data").find({time:{$gt:from, $lt:to}}).sort({time:-1}).toArray(function(err, result){
+  db.collection("dataWeather").find({time:{$gt:from, $lt:to}}).sort({time:-1}).toArray(function(err, result){
     res.send(JSON.stringify(result));
   });
 });
@@ -64,7 +63,7 @@ app.get("/setValue", function (req, res) {
 		h: VALUEh,
 		time: VALUEtime
 	}
-	db.collection("data").insert(dataObj, function(err,result){
+	db.collection("dataWeather").insert(dataObj, function(err,result){
 		console.log("added data: " + JSON.stringify(dataObj));
 	});
   res.send(VALUEtime.toString());
