@@ -9,14 +9,14 @@ function getDataFromServer()
 		console.log(data, typeof data);
 		var args = data.split(" ");
 		console.log(args);
-		var t = args[0];
+		var t = parseFloat(args[0]) * 1.8 + 32;
 		var h = args[1];
 		var time = args[2];
 
 		var output =
 		"<h2> Temperature </h2> <p>" + t + " &deg; F</p>"+
 		"<h2> Humidity </h2> <p>" + h + " %</p>"+
-		"<p> at " + new Date(parseInt(time)).toDateString() + "</p>";
+		"<p> at " + new Date(parseInt(time)) + "</p>";
 
 		document.getElementById("data").innerHTML = output;
 
