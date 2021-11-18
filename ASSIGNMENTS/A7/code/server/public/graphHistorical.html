@@ -8,40 +8,23 @@
 
 <script src='asyncReq.js'></script>
 <script>
-var chart;
 var lastAddedTS = 0;
-function getDataFromServer()
-{
-	var url = "./getLatest"
-	var callback = function(data){
-		var obj = JSON.parse(data);
-		var columns = [["x"],["Temperature"],["Humidity"]]
-		for(var i = 0; i < obj.length; i++){
-			var timestamp = parseInt(obj[i].time);
-			if(timestamp > lastAddedTS){
-				columns[0].push(getTSInFormat(timestamp));
-				columns[1].push(obj[i].t || 0);
-				columns[2].push(obj[i].h || 0);
-				lastAddedTS = timestamp;
-			}
-		}
 
-		chart.flow({
-  		columns: columns
-		});
-	}
-	loadFile(url, callback);
-}
 function getTSInFormat(t)
 {
 	var x = new Date(t);
 	return x.getFullYear() + "-" + (x.getMonth()+1) + "-" + x.getDate() + "T" + x.getHours() + ":" + x.getMinutes() + ":" + x.getSeconds();
 }
+
 function start(){
 	flatpickr("#datetimeSelect", { enableTime: true,
     dateFormat: "Y-m-d H:i"});
+}
 
-	var url = "./getLatest";
+function updateData(){
+  var from = 0;
+  var to = new Date().getTime();
+	var url = "./getData?from=" + from + "&to=" + to;
 	var callback = function(data){
 		var obj = JSON.parse(data);
 		var columns = [["x"],["Temperature"],["Humidity"]]
@@ -52,7 +35,7 @@ function start(){
 			columns[2].push(obj[i].h || 0);
 			lastAddedTS = timestamp;
 		}
-		chart = c3.generate({
+		var chart = c3.generate({
     	bindto: '#data',
     	data: {
 				x: 'x',
