@@ -1,6 +1,6 @@
 # Final
 
-**Due Dec 7rd midnight**
+**Due Dec 7th midnight**
 
 ## Task
 Starting with the code handout from previous 2 assignments (A7+A8)  modify the `graphHistorical.html` so that
